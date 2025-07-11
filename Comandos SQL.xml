@@ -1,0 +1,25 @@
+CREATE TABLE produtos (
+    id INT PRIMARY KEY,
+    nome VARCHAR(100) NOT NULL,
+    descricao TEXT,
+    preco DECIMAL(10,2) NOT NULL,
+    qtd_em_estoque INT NOT NULL
+);
+
+INSERT INTO produtos (id, nome, descricao, preco, qtd_em_estoque) VALUES
+(1, 'Café', 'Café Vácuo 500g', 14.90, 45),
+(2, 'Água', 'Água com Gás 500ml', 3.50, 15),
+(3, 'Açucar', 'Açucar Cristal 1kg', 3.99, 62);
+
+CREATE TABLE pedidos (
+    id INT PRIMARY KEY,
+    id_produto INT,
+    quantidade INT NOT NULL,
+    data_pedido DATE,
+    FOREIGN KEY (id_produto) REFERENCES produtos(id)
+);
+
+INSERT INTO pedidos (id, id_produto, quantidade, data_pedido) VALUES
+(1, 1, 2, '2025-07-05'),
+(2, 2, 10, '2025-07-07'),
+(3, 3, 4, '2025-07-10');
